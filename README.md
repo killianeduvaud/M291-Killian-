@@ -7,4 +7,5 @@ Module M291 - interfaces web.
 -(permetre de dire quel style a utiliser a l'ia
 -(crée une entreprise)
 
-## Mon projet (idée en une phrase)
+## Mon projet
+faire du designer un grand qualité 
