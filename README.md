@@ -17,3 +17,9 @@ Faire un design de grande qualité, prêt pour le repository.
 ## Mon site
 
 Ma page profil est en ligne ici : https://killianeduvaud.github.io/M291-Killian-/
+
+## Mes 3 sites préférés
+
+- [Nom du site](https://www.nintendo.com)
+- [Nom du site](https://www.youtube.com)
+- [Nom du site](https://claude.ai)
