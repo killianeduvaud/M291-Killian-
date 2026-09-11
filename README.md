@@ -1,12 +1,15 @@
 # M291-Killian-
+
 Module M291 - interfaces web.
 
-## ce que je veux apprendre
+Je suis **Killian**, étudiant en Médiamatique.
 
--(designe web)
--(permetre de dire quel style a utiliser a l'ia
--(crée une entreprise) 
+## Ce que je veux apprendre
+
+- le design web
+- comment dire à l'IA quel style utiliser
+- créer une entreprise
 
 ## Mon projet
-faire du designer un grand qualité pour repostory
-repo prêt
+
+Faire un design de grande qualité, prêt pour le repository.
