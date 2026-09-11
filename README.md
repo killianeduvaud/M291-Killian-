@@ -13,3 +13,7 @@ Je suis **Killian**, étudiant en Médiamatique.
 ## Mon projet
 
 Faire un design de grande qualité, prêt pour le repository.
+
+## Mon site
+
+Ma page profil est en ligne ici : https://killianeduvaud.github.io/M291-Killian-/
