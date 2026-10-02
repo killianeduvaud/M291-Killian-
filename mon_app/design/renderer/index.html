@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Devis</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HOME -->
+  <section id="view-home" class="view">
+    <div class="home-dragbar"></div>
+    <div class="home-wrap">
+      <div class="home-logo" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><rect x="9" y="5" width="30" height="38" rx="5" fill="#fff" stroke="currentColor" stroke-width="2.5"/><path d="M16 16h12M16 23h16M16 30h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="36" cy="36" r="8" fill="#34c759"/><path d="M32.5 36l2.5 2.5 4.5-5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1>Devis</h1>
+      <p class="subtitle">Créez un devis professionnel en quelques minutes</p>
+      <div class="home-actions">
+        <button class="home-card home-card-primary" id="btn-new-quote">
+          <span class="home-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v7M8.5 13.5h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span class="home-card-title">Nouveau devis</span>
+          <span class="home-card-desc">Choisir un modèle, remplir et générer en PDF ou Word</span>
+        </button>
+        <button class="home-card" id="btn-profiles">
+          <span class="home-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 21V9l6-4v16M10 21V3l10 4v14M3 21h18M13 9h4M13 13h4M13 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="home-card-title">Profils d'entreprise</span>
+          <span class="home-card-desc">Vos coordonnées, logo, banque et devise</span>
+        </button>
+      </div>
+      <button class="btn btn-text home-help" id="btn-help">
+        <span class="help-dot" aria-hidden="true">?</span> Revoir le tutoriel
+      </button>
+    </div>
+  </section>
+
+  <!-- CHOOSE TEMPLATE -->
+  <section id="view-choose-template" class="view hidden">
+    <header class="topbar">
+      <button class="btn-back" data-back="home">‹ Retour</button>
+      <h2>Choisir un modèle</h2>
+    </header>
+    <div class="view-body">
+      <p class="choose-intro">Choisissez la mise en page de votre devis. Vous pourrez en changer avant de le générer.</p>
+      <div class="model-grid" id="model-grid">
+        <div class="model-card" data-template="classique" role="button" tabindex="0">
+          <div class="model-preview"><iframe sandbox="" scrolling="no" tabindex="-1" title="Aperçu du modèle Classique"></iframe></div>
+          <div class="model-info">
+            <span class="t-name">Classique</span>
+            <span class="t-desc">Vendeur et client côte à côte, tableau détaillé avec TVA par ligne.</span>
+          </div>
+          <span class="btn btn-primary model-choose">Choisir ce modèle</span>
+        </div>
+        <div class="model-card" data-template="lettre" role="button" tabindex="0">
+          <div class="model-preview"><iframe sandbox="" scrolling="no" tabindex="-1" title="Aperçu du modèle Lettre"></iframe></div>
+          <div class="model-info">
+            <span class="t-name">Lettre</span>
+            <span class="t-desc">Style courrier : responsables du projet, introduction et prestations par catégorie.</span>
+          </div>
+          <span class="btn btn-primary model-choose">Choisir ce modèle</span>
+        </div>
+        <div class="model-card" data-template="travaux" role="button" tabindex="0">
+          <div class="model-preview"><iframe sandbox="" scrolling="no" tabindex="-1" title="Aperçu du modèle Travaux"></iframe></div>
+          <div class="model-info">
+            <span class="t-name">Travaux</span>
+            <span class="t-desc">Tableau par lots, TVA par ligne, début et durée des travaux.</span>
+          </div>
+          <span class="btn btn-primary model-choose">Choisir ce modèle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILES LIST -->
+  <section id="view-profiles" class="view hidden">
+    <header class="topbar">
+      <button class="btn-back" data-back="home">‹ Retour</button>
+      <h2>Profils d'entreprise</h2>
+      <button class="btn btn-primary" id="btn-add-profile">+ Nouveau profil</button>
+    </header>
+    <div class="view-body">
+      <div id="profiles-list" class="profiles-list"></div>
+    </div>
+  </section>
+
+  <!-- PROFILE EDIT -->
+  <section id="view-profile-edit" class="view hidden">
+    <header class="topbar">
+      <button class="btn-back" data-back="profiles">‹ Retour</button>
+      <h2 id="profile-edit-title">Nouveau profil</h2>
+      <div class="topbar-actions">
+        <button class="btn btn-danger hidden" id="btn-delete-profile">Supprimer</button>
+        <button class="btn btn-primary" id="btn-save-profile">Enregistrer</button>
+      </div>
+    </header>
+    <div class="view-body">
+      <form id="profile-form" class="form-stack">
+        <input type="hidden" id="p-id">
+
+        <section class="card form-section" id="psec-identity">
+          <h3 class="section-title">Identité</h3>
+          <div class="form-grid">
+            <div class="field span-2">
+              <label for="p-name">Nom du profil <span class="req">*</span> <span class="label-hint">— pour le retrouver dans l'application</span></label>
+              <input type="text" id="p-name" placeholder="Ex. Atelier Exemple">
+            </div>
+            <div class="field span-2">
+              <label>Logo</label>
+              <div class="logo-picker">
+                <div class="logo-preview" id="p-logo-preview">Aucun logo</div>
+                <div class="logo-buttons">
+                  <button type="button" class="btn btn-secondary" id="btn-pick-logo">Choisir un logo…</button>
+                  <button type="button" class="btn btn-text" id="btn-remove-logo">Supprimer le logo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card form-section" id="psec-contact">
+          <h3 class="section-title">Coordonnées</h3>
+          <div class="form-grid">
+            <div class="field"><label for="p-companyName">Raison sociale</label><input type="text" id="p-companyName" placeholder="Ex. Atelier Exemple Sàrl"></div>
+            <div class="field"><label for="p-phone">Téléphone</label><input type="text" id="p-phone" placeholder="Ex. +41 21 555 12 34"></div>
+            <div class="field"><label for="p-address1">Adresse</label><input type="text" id="p-address1" placeholder="Ex. Rue du Marché 12"></div>
+            <div class="field"><label for="p-address2">Code postal / Ville</label><input type="text" id="p-address2" placeholder="Ex. 1003 Lausanne"></div>
+            <div class="field span-2"><label for="p-email">E-mail</label><input type="email" id="p-email" placeholder="Ex. contact@atelier-exemple.ch"></div>
+          </div>
+        </section>
+
+        <section class="card form-section" id="psec-legal">
+          <h3 class="section-title">Informations légales et TVA</h3>
+          <div class="form-grid">
+            <div class="field"><label for="p-siret">SIRET / IDE</label><input type="text" id="p-siret"></div>
+            <div class="field"><label for="p-vat">N° de TVA</label><input type="text" id="p-vat"></div>
+            <div class="field"><label for="p-vatRate">Taux de TVA par défaut (%)</label><input type="number" id="p-vatRate" step="0.1" value="20"></div>
+            <div class="field">
+              <label for="p-currency">Devise</label>
+              <select id="p-currency">
+                <option value="EUR">Euro (€)</option>
+                <option value="CHF">Franc suisse (CHF) — TVA arrondie à 0.05</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="card form-section" id="psec-bank">
+          <h3 class="section-title">Banque et mentions</h3>
+          <div class="form-grid">
+            <div class="field"><label for="p-bankName">Banque</label><input type="text" id="p-bankName"></div>
+            <div class="field"><label for="p-bic">BIC / SWIFT</label><input type="text" id="p-bic"></div>
+            <div class="field span-2"><label for="p-iban">IBAN</label><input type="text" id="p-iban"></div>
+            <div class="field span-2">
+              <label for="p-legalMentions">Mentions légales <span class="label-hint">— affichées sur chaque devis</span></label>
+              <textarea id="p-legalMentions" rows="3" placeholder="Ex. Devis valable 30 jours. Pénalités de retard : 3x le taux légal."></textarea>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </section>
+
+  <!-- NEW QUOTE -->
+  <section id="view-new-quote" class="view hidden">
+    <header class="topbar">
+      <button class="btn-back" data-back="choose-template">‹ Modèles</button>
+      <h2>Nouveau devis</h2>
+    </header>
+
+    <div class="view-body">
+    <div class="quote-layout">
+      <form id="quote-form" class="quote-form">
+
+        <p class="required-note"><span class="req">*</span> = champ obligatoire</p>
+
+        <section class="card form-section numbered" id="sec-company">
+          <h3 class="section-title"><span class="step-num"></span>Entreprise</h3>
+          <div class="form-grid">
+            <div class="field span-2">
+              <label for="q-profileId">Profil d'entreprise qui émet le devis <span class="req">*</span></label>
+              <select id="q-profileId"></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="card form-section numbered" id="sec-client">
+          <h3 class="section-title"><span class="step-num"></span>Client</h3>
+          <div class="form-grid">
+            <div class="field"><label for="q-clientName">Nom du client <span class="req">*</span></label><input type="text" id="q-clientName" placeholder="Ex. Sophie Martin"></div>
+            <div class="field"><label for="q-clientNumber">Numéro client</label><input type="text" id="q-clientNumber"></div>
+            <div class="field span-2" data-only="lettre">
+              <label for="q-clientContact">Interlocuteur</label>
+              <input type="text" id="q-clientContact" placeholder="Ex. Mme Sophie Martin">
+            </div>
+            <div class="field"><label for="q-clientAddress1">Adresse</label><input type="text" id="q-clientAddress1" placeholder="Ex. Avenue des Alpes 8"></div>
+            <div class="field"><label for="q-clientAddress2">Code postal / Ville</label><input type="text" id="q-clientAddress2" placeholder="Ex. 1820 Montreux"></div>
+          </div>
+        </section>
+
+        <section class="card form-section numbered" id="sec-quote">
+          <h3 class="section-title"><span class="step-num"></span>Devis</h3>
+          <div class="form-grid">
+            <div class="field span-2" data-only="lettre">
+              <label for="q-quoteTitle">Titre du devis <span class="req">*</span></label>
+              <input type="text" id="q-quoteTitle" placeholder="Ex. Devis_2026_014_Brochure">
+            </div>
+            <div class="field"><label for="q-quoteNumber">Numéro de devis <span class="req">*</span></label><input type="text" id="q-quoteNumber"></div>
+            <div class="field"><label for="q-vatRate">Taux de TVA par défaut (%)</label><input type="number" id="q-vatRate" step="0.1"></div>
+            <div class="field"><label for="q-issueDate">Date d'émission <span class="req">*</span></label><input type="date" id="q-issueDate"></div>
+            <div class="field"><label for="q-validityDate">Valable jusqu'au <span class="req">*</span></label><input type="date" id="q-validityDate"></div>
+            <div class="field" data-only="lettre">
+              <label for="q-place">Lieu <span class="label-hint">— « Lieu, le date »</span></label>
+              <input type="text" id="q-place" placeholder="Ex. Lausanne">
+            </div>
+            <div class="field" data-only="travaux">
+              <label for="q-workStart">Début des travaux</label>
+              <input type="date" id="q-workStart">
+            </div>
+            <div class="field" data-only="travaux">
+              <label for="q-workDuration">Durée estimée</label>
+              <input type="text" id="q-workDuration" placeholder="Ex. 5 jours">
+            </div>
+          </div>
+        </section>
+
+        <section class="card form-section numbered" id="sec-letter" data-only="lettre">
+          <h3 class="section-title"><span class="step-num"></span>Courrier</h3>
+          <div class="form-grid">
+            <div class="field span-2">
+              <label for="q-managers">Responsable(s) de projet <span class="label-hint">— une information par ligne</span></label>
+              <textarea id="q-managers" rows="3" placeholder="Julie Bernard&#10;julie.bernard@exemple.ch"></textarea>
+            </div>
+            <div class="field">
+              <label for="q-salutation">Formule d'appel</label>
+              <select id="q-salutation">
+                <option>Madame,</option>
+                <option>Monsieur,</option>
+                <option>Madame, Monsieur,</option>
+                <option>Mesdames, Messieurs,</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="q-signatories">Signataires <span class="label-hint">— un nom par ligne, 2 max</span></label>
+              <textarea id="q-signatories" rows="2" placeholder="Julie Bernard&#10;Thomas Morel"></textarea>
+            </div>
+            <div class="field span-2">
+              <label for="q-intro">Introduction</label>
+              <textarea id="q-intro" rows="3"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="card form-section numbered" id="sec-lines">
+          <h3 class="section-title"><span class="step-num"></span>Produits / Services <span class="req">*</span></h3>
+          <table class="lines-table" id="lines-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th class="w-qty" title="Combien (ex. 3)">Qté</th>
+                <th class="w-unit" title="Ce qui est compté (ex. h, pièce, m²)">Unité</th>
+                <th class="w-price">Prix HT</th>
+                <th class="w-vat">TVA %</th>
+                <th class="w-total">Total HT</th>
+                <th class="w-del"></th>
+              </tr>
+            </thead>
+            <tbody id="lines-body"></tbody>
+          </table>
+          <datalist id="unit-options">
+            <option value="h">heure</option>
+            <option value="jour"></option>
+            <option value="pièce"></option>
+            <option value="forfait"></option>
+            <option value="m²"></option>
+            <option value="m"></option>
+            <option value="lot"></option>
+            <option value="km"></option>
+          </datalist>
+          <div class="lines-actions">
+            <button type="button" class="btn btn-soft" id="btn-add-line">+ Ajouter une ligne</button>
+            <button type="button" class="btn btn-soft" id="btn-add-section">+ Ajouter une section</button>
+          </div>
+          <p class="lines-hint"><strong>Qté</strong> = combien (ex. 3) · <strong>Unité</strong> = ce qui est compté (h, pièce, m²…), facultative · <strong>TVA</strong> vide = taux par défaut.</p>
+        </section>
+
+        <section class="card form-section numbered" id="sec-payment">
+          <h3 class="section-title"><span class="step-num"></span>Remise et paiement</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label for="q-discountType">Remise / escompte</label>
+              <select id="q-discountType">
+                <option value="none">Aucune</option>
+                <option value="percent">Pourcentage (%)</option>
+                <option value="amount">Montant fixe</option>
+              </select>
+            </div>
+            <div class="field"><label for="q-discountValue">Valeur de la remise</label><input type="number" id="q-discountValue" step="0.01" value="0"></div>
+            <div class="field">
+              <label for="q-depositPercent">Acompte à la commande (%)</label>
+              <input type="number" id="q-depositPercent" step="1" min="0" max="100" value="0">
+            </div>
+            <div class="field">
+              <label for="q-balancePercent">Solde restant (%)</label>
+              <input type="number" id="q-balancePercent" disabled>
+            </div>
+            <div class="field span-2" data-only="travaux">
+              <label for="q-paymentTerms">Conditions de paiement</label>
+              <textarea id="q-paymentTerms" rows="2" placeholder="Laissez vide pour les générer à partir de l'acompte"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="card form-section numbered" id="sec-notes">
+          <h3 class="section-title"><span class="step-num"></span>Notes</h3>
+          <div class="field">
+            <label id="q-additionalInfo-label" for="q-additionalInfo">Informations additionnelles</label>
+            <textarea id="q-additionalInfo" rows="2"></textarea>
+          </div>
+        </section>
+      </form>
+
+      <aside class="recap card" id="recap">
+        <div id="recap-totals">
+          <h3>Récapitulatif</h3>
+          <div class="recap-row"><span>Sous-total HT</span><strong id="r-subtotal">0,00 €</strong></div>
+          <div class="recap-row"><span>Remise</span><strong id="r-discount">0,00 €</strong></div>
+          <div class="recap-row"><span>Total HT (net)</span><strong id="r-nethtc">0,00 €</strong></div>
+          <div class="recap-row"><span>TVA</span><strong id="r-vat">0,00 €</strong></div>
+          <div class="recap-row recap-total"><span>Total TTC</span><strong id="r-ttc">0,00 €</strong></div>
+          <div class="recap-row"><span>Acompte à payer</span><strong id="r-deposit">0,00 €</strong></div>
+          <div class="recap-row"><span>Solde restant</span><strong id="r-balance">0,00 €</strong></div>
+        </div>
+
+        <div id="recap-options">
+          <div class="recap-template">
+            <span>Modèle</span> <strong id="r-template">Classique</strong>
+            <button type="button" class="btn btn-text" id="btn-change-template">Changer</button>
+          </div>
+          <div class="segmented" role="radiogroup" aria-label="Format du fichier">
+            <label><input type="radio" name="format" value="pdf" checked><span>PDF</span></label>
+            <label><input type="radio" name="format" value="docx"><span>Word (.docx)</span></label>
+          </div>
+        </div>
+        <div class="validation-box hidden" id="validation-box" role="alert"></div>
+        <button class="btn btn-primary btn-big" id="btn-generate">Générer le devis</button>
+        <p class="generate-status" id="generate-status"></p>
+      </aside>
+    </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- GUIDED TOUR (spotlight on the real interface) -->
+<div id="tour" class="tour hidden">
+  <div class="tour-blocker"></div>
+  <div class="tour-blocker"></div>
+  <div class="tour-blocker"></div>
+  <div class="tour-blocker"></div>
+  <div class="tour-hole" id="tour-hole"></div>
+  <div class="tour-bubble" id="tour-bubble" role="dialog" aria-labelledby="tour-title" aria-describedby="tour-text">
+    <div class="tour-arrow" id="tour-arrow"></div>
+    <div class="tour-progress">
+      <span id="tour-count"></span>
+      <div class="tour-bar"><span id="tour-bar-fill"></span></div>
+    </div>
+    <h3 id="tour-title"></h3>
+    <p id="tour-text"></p>
+    <p class="tour-action hidden" id="tour-action">Cliquez sur l'élément entouré, ou sur « Suivant ».</p>
+    <div class="tour-buttons">
+      <button class="tour-skip" id="tour-skip">Passer le tutoriel</button>
+      <div class="tour-nav">
+        <button class="btn btn-secondary" id="tour-prev">Précédent</button>
+        <button class="btn btn-primary" id="tour-next">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ERROR DIALOG -->
+<div id="error-dialog" class="overlay hidden" role="alertdialog" aria-modal="true" aria-labelledby="err-title" aria-describedby="err-message">
+  <div class="overlay-card error-card">
+    <div class="err-icon" aria-hidden="true">!</div>
+    <h2 id="err-title"></h2>
+    <p id="err-message"></p>
+    <p id="err-hint" class="err-hint"></p>
+    <div class="err-code">Code erreur : <strong id="err-code"></strong> <span id="err-name"></span></div>
+    <details id="err-details">
+      <summary>Détails techniques</summary>
+      <pre id="err-details-text"></pre>
+    </details>
+    <div class="err-actions">
+      <button class="btn btn-secondary" id="err-copy">Copier le code</button>
+      <button class="btn btn-primary" id="err-close">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- FIRST-RUN TUTORIAL -->
+<div id="tutorial" class="tutorial hidden" role="dialog" aria-modal="true" aria-labelledby="tuto-title">
+  <div class="tutorial-card">
+    <button class="tutorial-skip" id="tuto-skip">Passer</button>
+    <div class="tutorial-stage" id="tuto-stage" aria-hidden="true"></div>
+    <div class="tutorial-step" id="tuto-step"></div>
+    <h2 id="tuto-title"></h2>
+    <p id="tuto-text"></p>
+    <div class="tutorial-footer">
+      <div class="tutorial-dots" id="tuto-dots"></div>
+      <div class="tutorial-nav">
+        <button class="btn btn-secondary" id="tuto-prev">Précédent</button>
+        <button class="btn btn-primary" id="tuto-next">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tutorial scenes (cloned into #tuto-stage so animations restart) -->
+<template id="scene-welcome">
+  <svg viewBox="0 0 360 200">
+    <g class="a-rise">
+      <rect x="130" y="22" width="100" height="140" rx="8" class="sc-paper"/>
+      <rect x="144" y="38" width="34" height="9" rx="2" class="sc-accent"/>
+      <rect x="198" y="36" width="18" height="14" rx="3" class="sc-soft"/>
+      <line x1="144" y1="64" x2="216" y2="64" class="sc-stroke a-draw" style="--d:.45s"/>
+      <line x1="144" y1="76" x2="200" y2="76" class="sc-stroke a-draw" style="--d:.6s"/>
+      <rect x="144" y="90" width="72" height="8" rx="2" class="sc-soft a-fade" style="--d:.75s"/>
+      <line x1="144" y1="108" x2="216" y2="108" class="sc-stroke a-draw" style="--d:.9s"/>
+      <line x1="144" y1="120" x2="216" y2="120" class="sc-stroke a-draw" style="--d:1s"/>
+      <rect x="180" y="134" width="36" height="10" rx="2" class="sc-accent a-fade" style="--d:1.15s"/>
+    </g>
+    <g class="a-pop" style="--d:1.4s">
+      <circle cx="232" cy="34" r="17" class="sc-ok"/>
+      <path d="M224 34 l6 6 l10 -12" class="sc-check"/>
+    </g>
+    <path d="M100 60 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3 z" class="sc-spark a-twinkle" style="--d:1.6s"/>
+    <path d="M262 120 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 z" class="sc-spark a-twinkle" style="--d:1.9s"/>
+    <path d="M110 140 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2 z" class="sc-spark a-twinkle" style="--d:2.2s"/>
+  </svg>
+</template>
+
+<template id="scene-profile">
+  <svg viewBox="0 0 360 200">
+    <g class="a-rise">
+      <rect x="70" y="26" width="220" height="148" rx="12" class="sc-paper"/>
+      <g class="a-pop" style="--d:.5s">
+        <rect x="90" y="46" width="46" height="46" rx="10" class="sc-soft"/>
+        <path d="M101 82 v-22 h12 v22 M113 82 v-30 h13 v30 M104 66 h6 M104 72 h6 M116 58 h7 M116 64 h7 M116 70 h7" class="sc-accent-stroke"/>
+      </g>
+      <rect x="152" y="48" width="118" height="8" rx="3" class="sc-line"/>
+      <rect x="152" y="48" width="96" height="8" rx="3" class="sc-accent a-fill" style="--d:.8s"/>
+      <rect x="152" y="66" width="118" height="8" rx="3" class="sc-line"/>
+      <rect x="152" y="66" width="70" height="8" rx="3" class="sc-ink a-fill" style="--d:1.05s"/>
+      <rect x="152" y="84" width="118" height="8" rx="3" class="sc-line"/>
+      <rect x="152" y="84" width="84" height="8" rx="3" class="sc-ink a-fill" style="--d:1.3s"/>
+      <rect x="90" y="108" width="180" height="8" rx="3" class="sc-line"/>
+      <rect x="90" y="108" width="130" height="8" rx="3" class="sc-ink a-fill" style="--d:1.55s"/>
+      <rect x="90" y="124" width="180" height="8" rx="3" class="sc-line"/>
+      <rect x="90" y="124" width="110" height="8" rx="3" class="sc-ink a-fill" style="--d:1.8s"/>
+      <g class="a-pulse" style="--d:2.1s">
+        <rect x="206" y="144" width="64" height="18" rx="6" class="sc-accent"/>
+        <rect x="220" y="151" width="36" height="4" rx="2" class="sc-white"/>
+      </g>
+    </g>
+  </svg>
+</template>
+
+<template id="scene-template">
+  <svg viewBox="0 0 360 200">
+    <g class="a-fade" style="--d:.1s">
+      <rect x="44" y="30" width="76" height="104" rx="7" class="sc-paper"/>
+      <rect x="54" y="42" width="24" height="7" rx="2" class="sc-accent"/>
+      <rect x="54" y="60" width="56" height="3" class="sc-line"/><rect x="54" y="68" width="56" height="3" class="sc-line"/>
+      <rect x="54" y="80" width="56" height="3" class="sc-line"/><rect x="54" y="88" width="56" height="3" class="sc-line"/>
+      <rect x="84" y="110" width="26" height="8" rx="2" class="sc-accent"/>
+    </g>
+    <g class="a-fade" style="--d:.25s">
+      <rect x="142" y="30" width="76" height="104" rx="7" class="sc-paper"/>
+      <rect x="152" y="40" width="22" height="6" rx="2" class="sc-accent"/>
+      <rect x="152" y="49" width="56" height="1.5" class="sc-ink"/>
+      <rect x="152" y="58" width="36" height="5" class="sc-ink"/>
+      <rect x="152" y="72" width="56" height="7" class="sc-blue"/>
+      <rect x="152" y="81" width="56" height="5" class="sc-soft"/><rect x="156" y="89" width="44" height="3" class="sc-line"/>
+      <rect x="152" y="96" width="56" height="5" class="sc-soft"/><rect x="156" y="104" width="44" height="3" class="sc-line"/>
+    </g>
+    <g class="a-fade" style="--d:.4s">
+      <rect x="240" y="30" width="76" height="104" rx="7" class="sc-paper"/>
+      <rect x="248" y="38" width="22" height="18" class="sc-soft"/>
+      <rect x="284" y="41" width="24" height="8" rx="2" class="sc-blue"/>
+      <rect x="248" y="64" width="20" height="4" class="sc-blue"/><rect x="248" y="70" width="20" height="4" class="sc-blue"/>
+      <rect x="248" y="82" width="60" height="7" class="sc-blue"/>
+      <rect x="248" y="91" width="60" height="5" class="sc-line"/><rect x="248" y="98" width="60" height="5" class="sc-grey"/><rect x="248" y="105" width="60" height="5" class="sc-line"/>
+      <rect x="284" y="116" width="24" height="10" class="sc-blue"/>
+    </g>
+    <text x="82" y="156" class="sc-label">Classique</text>
+    <text x="180" y="156" class="sc-label">Lettre</text>
+    <text x="278" y="156" class="sc-label">Travaux</text>
+    <g class="a-select">
+      <rect x="38" y="24" width="88" height="140" rx="10" class="sc-ring"/>
+      <circle cx="122" cy="28" r="10" class="sc-accent"/>
+      <path d="M117 28 l3.5 3.5 l6 -7" class="sc-check"/>
+    </g>
+  </svg>
+</template>
+
+<template id="scene-fill">
+  <svg viewBox="0 0 360 200">
+    <rect x="40" y="20" width="280" height="160" rx="12" class="sc-paper"/>
+    <rect x="58" y="36" width="244" height="14" rx="4" class="sc-soft"/>
+    <rect x="66" y="41" width="60" height="4" rx="2" class="sc-accent"/>
+    <rect x="236" y="41" width="22" height="4" rx="2" class="sc-accent"/>
+    <rect x="270" y="41" width="24" height="4" rx="2" class="sc-accent"/>
+    <g class="a-row" style="--d:.3s">
+      <rect x="66" y="62" width="120" height="6" rx="3" class="sc-ink"/><rect x="236" y="62" width="16" height="6" rx="3" class="sc-line"/><rect x="266" y="62" width="28" height="6" rx="3" class="sc-ink"/>
+    </g>
+    <g class="a-row" style="--d:.9s">
+      <rect x="66" y="80" width="96" height="6" rx="3" class="sc-ink"/><rect x="236" y="80" width="16" height="6" rx="3" class="sc-line"/><rect x="266" y="80" width="28" height="6" rx="3" class="sc-ink"/>
+    </g>
+    <g class="a-row" style="--d:1.5s">
+      <rect x="66" y="98" width="140" height="6" rx="3" class="sc-ink"/><rect x="236" y="98" width="16" height="6" rx="3" class="sc-line"/><rect x="266" y="98" width="28" height="6" rx="3" class="sc-ink"/>
+    </g>
+    <g class="a-pulse" style="--d:1.9s">
+      <circle cx="74" cy="124" r="8" class="sc-accent"/>
+      <path d="M70 124 h8 M74 120 v8" class="sc-plus"/>
+    </g>
+    <line x1="58" y1="140" x2="302" y2="140" class="sc-stroke"/>
+    <rect x="206" y="150" width="96" height="16" rx="5" class="sc-accent a-pop" style="--d:2.3s"/>
+    <rect x="218" y="156" width="72" height="4" rx="2" class="sc-white a-pop" style="--d:2.4s"/>
+    <rect x="186" y="60" width="2" height="10" class="sc-caret a-caret"/>
+  </svg>
+</template>
+
+<template id="scene-export">
+  <svg viewBox="0 0 360 200">
+    <g class="a-rise">
+      <rect x="140" y="20" width="80" height="108" rx="7" class="sc-paper"/>
+      <rect x="152" y="34" width="28" height="7" rx="2" class="sc-accent"/>
+      <rect x="152" y="52" width="56" height="3" class="sc-line"/><rect x="152" y="60" width="56" height="3" class="sc-line"/>
+      <rect x="152" y="68" width="40" height="3" class="sc-line"/><rect x="152" y="84" width="56" height="3" class="sc-line"/>
+      <rect x="180" y="104" width="28" height="8" rx="2" class="sc-accent"/>
+    </g>
+    <g class="a-pop" style="--d:.5s">
+      <rect x="92" y="54" width="40" height="22" rx="6" class="sc-pdf"/>
+      <text x="112" y="69" class="sc-badge">PDF</text>
+    </g>
+    <g class="a-pop" style="--d:.7s">
+      <rect x="228" y="54" width="44" height="22" rx="6" class="sc-word"/>
+      <text x="250" y="69" class="sc-badge">Word</text>
+    </g>
+    <g class="a-drop" style="--d:1s">
+      <path d="M180 134 v24 M170 149 l10 10 l10 -10" class="sc-accent-stroke"/>
+    </g>
+    <path d="M140 164 v10 a4 4 0 0 0 4 4 h72 a4 4 0 0 0 4 -4 v-10" class="sc-tray"/>
+    <g class="a-pop" style="--d:1.7s">
+      <circle cx="232" cy="164" r="12" class="sc-ok"/>
+      <path d="M226 164 l4.5 4.5 l7.5 -9" class="sc-check"/>
+    </g>
+  </svg>
+</template>
+
+<script src="calc.js"></script>
+<script src="tutorial.js"></script>
+<script src="tour.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
