@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="700" viewBox="0 0 1240 700" font-family="Helvetica, Arial, sans-serif">
+<rect width="1240" height="700" fill="#f7f8fa"/>
+<text x="40" y="48" font-size="24" font-weight="700" fill="#1d1d1f">User flow · Devisexpress — créer un devis et le générer en PDF</text>
+<text x="40" y="74" font-size="15" fill="#4a4a4f">Persona : Marc, 38 ans, peintre indépendant à Yverdon · téléphone, une main, dans sa camionnette</text>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6472"/></marker></defs>
+<rect x="40" y="100" width="360" height="270" rx="14" fill="#fff" stroke="#c9ced6" stroke-width="1.5"/>
+<circle cx="70" cy="132" r="16" fill="#1f3a5f"/><text x="70" y="138" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+<text x="96" y="138" font-size="18" font-weight="700" fill="#1d1d1f">Accueil — catalogue</text>
+<text x="60" y="176" font-size="13" font-weight="700" fill="#5b6472">ACTION DE L'UTILISATEUR</text>
+<text x="60" y="200" font-size="16" fill="#1d1d1f">Touche « Nouveau devis »</text>
+<text x="60" y="222" font-size="16" fill="#1d1d1f">et choisit le client.</text>
+<rect x="56" y="260" width="328" height="92" rx="10" fill="#e8f5ec" stroke="#2e7d4f" stroke-width="1"/>
+<text x="72" y="286" font-size="13" font-weight="700" fill="#1e5e3a">FEEDBACK ATTENDU</text>
+<text x="72" y="312" font-size="16" fill="#1d1d1f">Bandeau : « Devis pour</text>
+<text x="72" y="334" font-size="16" fill="#1d1d1f">Sophie Rochat · 0 ligne »</text>
+<line x1="404" y1="235.0" x2="434" y2="235.0" stroke="#5b6472" stroke-width="2.5" marker-end="url(#arr)"/>
+<rect x="440" y="100" width="360" height="270" rx="14" fill="#fff" stroke="#c9ced6" stroke-width="1.5"/>
+<circle cx="470" cy="132" r="16" fill="#1f3a5f"/><text x="470" y="138" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+<text x="496" y="138" font-size="18" font-weight="700" fill="#1d1d1f">Recherche / filtre</text>
+<text x="460" y="176" font-size="13" font-weight="700" fill="#5b6472">ACTION DE L'UTILISATEUR</text>
+<text x="460" y="200" font-size="16" fill="#1d1d1f">Touche la puce « Façade »</text>
+<text x="460" y="222" font-size="16" fill="#1d1d1f">ou tape « crépi ».</text>
+<rect x="456" y="260" width="328" height="92" rx="10" fill="#e8f5ec" stroke="#2e7d4f" stroke-width="1"/>
+<text x="472" y="286" font-size="13" font-weight="700" fill="#1e5e3a">FEEDBACK ATTENDU</text>
+<text x="472" y="312" font-size="16" fill="#1d1d1f">Liste réduite tout de suite :</text>
+<text x="472" y="334" font-size="16" fill="#1d1d1f">« 4 prestations »</text>
+<line x1="804" y1="235.0" x2="834" y2="235.0" stroke="#5b6472" stroke-width="2.5" marker-end="url(#arr)"/>
+<rect x="840" y="100" width="360" height="270" rx="14" fill="#fff" stroke="#c9ced6" stroke-width="1.5"/>
+<circle cx="870" cy="132" r="16" fill="#1f3a5f"/><text x="870" y="138" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+<text x="896" y="138" font-size="18" font-weight="700" fill="#1d1d1f">Fiche prestation</text>
+<text x="860" y="176" font-size="13" font-weight="700" fill="#5b6472">ACTION DE L'UTILISATEUR</text>
+<text x="860" y="200" font-size="16" fill="#1d1d1f">Ouvre « Peinture façade »,</text>
+<text x="860" y="222" font-size="16" fill="#1d1d1f">règle 85 m² avec − / +.</text>
+<rect x="856" y="260" width="328" height="92" rx="10" fill="#e8f5ec" stroke="#2e7d4f" stroke-width="1"/>
+<text x="872" y="286" font-size="13" font-weight="700" fill="#1e5e3a">FEEDBACK ATTENDU</text>
+<text x="872" y="312" font-size="16" fill="#1d1d1f">Total de la ligne en direct :</text>
+<text x="872" y="334" font-size="16" fill="#1d1d1f">CHF 2'550.00</text>
+<rect x="40" y="400" width="360" height="270" rx="14" fill="#fff" stroke="#c9ced6" stroke-width="1.5"/>
+<circle cx="70" cy="432" r="16" fill="#1f3a5f"/><text x="70" y="438" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+<text x="96" y="438" font-size="18" font-weight="700" fill="#1d1d1f">Ajouter au devis</text>
+<text x="60" y="476" font-size="13" font-weight="700" fill="#5b6472">ACTION DE L'UTILISATEUR</text>
+<text x="60" y="500" font-size="16" fill="#1d1d1f">Touche le bouton principal</text>
+<text x="60" y="522" font-size="16" fill="#1d1d1f">« Ajouter au devis ».</text>
+<rect x="56" y="560" width="328" height="92" rx="10" fill="#e8f5ec" stroke="#2e7d4f" stroke-width="1"/>
+<text x="72" y="586" font-size="13" font-weight="700" fill="#1e5e3a">FEEDBACK ATTENDU</text>
+<text x="72" y="612" font-size="16" fill="#1d1d1f">« Ajouté au devis ✓ »,</text>
+<text x="72" y="634" font-size="16" fill="#1d1d1f">bandeau : 1 ligne</text>
+<line x1="404" y1="535.0" x2="434" y2="535.0" stroke="#5b6472" stroke-width="2.5" marker-end="url(#arr)"/>
+<rect x="440" y="400" width="360" height="270" rx="14" fill="#fff" stroke="#c9ced6" stroke-width="1.5"/>
+<circle cx="470" cy="432" r="16" fill="#1f3a5f"/><text x="470" y="438" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+<text x="496" y="438" font-size="18" font-weight="700" fill="#1d1d1f">Catalogue (répète 2-4)</text>
+<text x="460" y="476" font-size="13" font-weight="700" fill="#5b6472">ACTION DE L'UTILISATEUR</text>
+<text x="460" y="500" font-size="16" fill="#1d1d1f">Ajoute « Préparation</text>
+<text x="460" y="522" font-size="16" fill="#1d1d1f">et masquage » (forfait).</text>
+<rect x="456" y="560" width="328" height="92" rx="10" fill="#e8f5ec" stroke="#2e7d4f" stroke-width="1"/>
+<text x="472" y="586" font-size="13" font-weight="700" fill="#1e5e3a">FEEDBACK ATTENDU</text>
+<text x="472" y="612" font-size="16" fill="#1d1d1f">Bandeau : 2 lignes ·</text>
+<text x="472" y="634" font-size="16" fill="#1d1d1f">CHF 2'900.00</text>
+<line x1="804" y1="535.0" x2="834" y2="535.0" stroke="#5b6472" stroke-width="2.5" marker-end="url(#arr)"/>
+<rect x="840" y="400" width="360" height="270" rx="14" fill="#fff" stroke="#c9ced6" stroke-width="1.5"/>
+<circle cx="870" cy="432" r="16" fill="#1f3a5f"/><text x="870" y="438" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+<text x="896" y="438" font-size="18" font-weight="700" fill="#1d1d1f">Récapitulatif → PDF</text>
+<text x="860" y="476" font-size="13" font-weight="700" fill="#5b6472">ACTION DE L'UTILISATEUR</text>
+<text x="860" y="500" font-size="16" fill="#1d1d1f">Vérifie HT, TVA 8,1 %, TTC</text>
+<text x="860" y="522" font-size="16" fill="#1d1d1f">puis « Générer le PDF ».</text>
+<rect x="856" y="560" width="328" height="92" rx="10" fill="#e8f5ec" stroke="#2e7d4f" stroke-width="1"/>
+<text x="872" y="586" font-size="13" font-weight="700" fill="#1e5e3a">FEEDBACK ATTENDU</text>
+<text x="872" y="612" font-size="16" fill="#1d1d1f">« Devis D-2026-014 prêt ✓ »</text>
+<text x="872" y="634" font-size="16" fill="#1d1d1f">objectif atteint</text>
+<path d="M 1020.0 372 L 1020.0 384 L 220.0 384 L 220.0 396" fill="none" stroke="#5b6472" stroke-width="2.5" marker-end="url(#arr)"/>
+</svg>
