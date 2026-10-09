@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piste C — Moderne & pragmatique · Devisexpress</title>
+<style>
+:root {
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif; --title-font: var(--font); --card-title-font: var(--font);
+  --title-size: 32px; --bg: #FFFFFF; --text: #111317; --title: #111317; --muted: #4B5059; --placeholder: #6B7079;
+  --field-bg: #F2F3F5; --field-border: 2px solid #111317; --radius: 10px; --chip-radius: 10px; --btn-radius: 10px;
+  --chip-border: 2px solid #111317; --chip-bg: #FFFFFF; --chip-text: #111317; --chip-on-bg: #111317; --chip-on-text: #FFFFFF;
+  --gap: 10px; --card: #FFFFFF; --card-border: 2px solid #111317; --shadow: none; --price: #111317;
+  --dock-bg: #111317; --dock-text: #FFFFFF; --dock-border: 0; --accent: #FF5A1F; --on-accent: #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { width: 390px; min-height: 844px; background: var(--bg); color: var(--text); font-family: var(--font); }
+.app { min-height: 844px; display: flex; flex-direction: column; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.top { padding: 22px 18px 6px; }
+.kicker { margin: 0 0 2px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 0 0 14px; font-family: var(--title-font); font-size: var(--title-size); color: var(--title); }
+.search { display: flex; align-items: center; gap: 10px; height: 50px; padding: 0 14px; border: var(--field-border); border-radius: var(--radius); background: var(--field-bg); }
+.search svg { width: 20px; height: 20px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+.search input { flex: 1; border: 0; background: transparent; font: inherit; font-size: 16px; color: var(--text); outline: none; }
+.search input::placeholder { color: var(--placeholder); }
+.chips { display: flex; gap: 8px; margin: 14px 0 4px; overflow: hidden; }
+.chip { height: 44px; padding: 0 14px; border-radius: var(--chip-radius); border: var(--chip-border); background: var(--chip-bg); color: var(--chip-text); font: inherit; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.chip.is-on { background: var(--chip-on-bg); color: var(--chip-on-text); border-color: var(--chip-on-bg); }
+main { flex: 1; padding: 0 18px 120px; }
+.count { margin: 12px 0 10px; font-size: 14px; color: var(--muted); }
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); }
+.card { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; padding: 14px 16px; border-radius: var(--radius); background: var(--card); border: var(--card-border); box-shadow: var(--shadow); color: inherit; text-decoration: none; }
+.card strong { display: block; font-size: 16px; font-family: var(--card-title-font); }
+.card small { display: block; margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+.card b { font-size: 16px; white-space: nowrap; color: var(--price); }
+.dock { position: fixed; left: 0; right: 0; bottom: 0; width: 390px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px 22px; background: var(--dock-bg); color: var(--dock-text); border-top: var(--dock-border); }
+.dock p { margin: 0; display: flex; flex-direction: column; font-size: 13.5px; }
+.dock strong { font-size: 16px; }
+.primary { height: 52px; padding: 0 20px; border: 0; border-radius: var(--btn-radius); background: var(--accent); color: var(--on-accent); font: inherit; font-size: 16px; font-weight: 700; }
+
+h1 { font-weight: 800; letter-spacing: -.02em; } .card { border-left-width: 6px; } .kicker { font-weight: 700; color: #111317; }
+</style></head>
+<body>
+<div class="app">
+  <header class="top">
+    <p class="kicker">Catalogue</p>
+    <h1>Devisexpress</h1>
+    <label class="search"><span class="sr-only">Rechercher une prestation</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+      <input type="search" placeholder="Rechercher une prestation…">
+    </label>
+    <nav class="chips" aria-label="Catégories">
+      <button class="chip" aria-pressed="false">Tout</button>
+      <button class="chip" aria-pressed="false">Peinture int.</button>
+      <button class="chip is-on" aria-pressed="true">✓ Façade</button>
+      <button class="chip" aria-pressed="false">Préparation</button>
+    </nav>
+  </header>
+  <main>
+    <p class="count">4 prestations · Façade</p>
+    <ul class="cards">
+      <li><a class="card" href="#"><span><strong>Peinture façade, 2 couches</strong><small>Façade · par m²</small></span><b>CHF 30.–</b></a></li>
+      <li><a class="card" href="#"><span><strong>Réparation crépi</strong><small>Façade · par m²</small></span><b>CHF 45.–</b></a></li>
+      <li><a class="card" href="#"><span><strong>Nettoyage haute pression</strong><small>Façade · par m²</small></span><b>CHF 8.–</b></a></li>
+      <li><a class="card" href="#"><span><strong>Fixateur de fond</strong><small>Façade · par m²</small></span><b>CHF 6.–</b></a></li>
+    </ul>
+  </main>
+  <footer class="dock">
+    <p><span>Devis pour S. Rochat</span><strong>1 ligne · CHF 2'550.–</strong></p>
+    <button class="primary">Voir le devis</button>
+  </footer>
+</div>
+</body></html>
