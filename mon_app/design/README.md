@@ -11,6 +11,6 @@
 | Critique & choix | [critique.md](critique.md) |
 | Maquette retenue | [maquette-retenue/](maquette-retenue/) |
 | Tests & accessibilité | [tests-utilisateurs.md](tests-utilisateurs.md) |
-| Roast (e2-1) | roast-grille.md — à faire par Killian |
+| Roast (e2-1) | [roast-grille.md](roast-grille.md) |
 
 Les autres fichiers de ce dossier (`main.js`, `preload.js`, `renderer/`, `src/`, `templates/`, `package.json`) sont un prototype d'application de bureau (Electron) réalisé en parallèle ; ils ne font pas partie des livrables du dossier design.
