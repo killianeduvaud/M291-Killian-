@@ -23,3 +23,7 @@ Ma page profil est en ligne ici : https://killianeduvaud.github.io/M291-Killian-
 - [Nom du site](https://www.nintendo.com)
 - [Nom du site](https://www.youtube.com)
 - [Nom du site](https://claude.ai)
+## Mon projet M291 : Devisexpress
+
+- Brief de conception : [brief.md](brief.md)
+- Dossier design (persona, user flow, wireframes, propositions, critique, tests) : [mon_app/design/](mon_app/design/)
