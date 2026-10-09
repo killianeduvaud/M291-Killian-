@@ -2,7 +2,7 @@
 
 | Étape | Document |
 |---|---|
-| Pitch | [pitch_1.md](pitch_1.md) |
+| Pitch | [pitch.md](pitch.md) |
 | Persona | [persona.md](persona.md) |
 | User flow | [user-flow.md](user-flow.md) · [schéma](user-flow.svg) |
 | Brief | [../../brief.md](../../brief.md) (à la racine du dépôt) |
