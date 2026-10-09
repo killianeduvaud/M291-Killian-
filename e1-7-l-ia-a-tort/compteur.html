@@ -20,6 +20,7 @@
     <p class="note">Livré par une IA. « Ça marche. » Vraiment ?</p>
     <p class="count" id="affiche">0</p>
     <button type="button" id="plus">+1</button>
+    <button type="button" id="reset">Reset</button>
   </main>
   <script>
     // Boîte « n » : le vrai compteur, en mémoire.
@@ -31,6 +32,12 @@
       n = n + 1;
       document.getElementById("affiche").textContent = n;
       console.log("n vaut maintenant", n);
+    });
+
+    // Reset : remet la boîte ET la vitrine à zéro.
+    document.getElementById("reset").addEventListener("click", function () {
+      n = 0;
+      document.getElementById("affiche").textContent = n;
     });
   </script>
 </body>
