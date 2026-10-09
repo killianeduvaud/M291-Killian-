@@ -29,3 +29,14 @@
 - Je pense que l'écran / la console va montrer : n commence à 0 et augmente à chaque clic sur le bouton
 - Ce qui s'est passé : le chiffre monte de +1 à chaque clic sur Lancer, sans recharger la page — juste
 - Si je me suis trompé, pourquoi : (pas d'erreur)
+
+## Extrait 7 — inventé par moi
+
+    let a = "5";
+    let b = 2;
+    let c = a * b;
+    console.log(c + a);
+
+- Prédiction de _(prénom du camarade)_ : _(à compléter en classe)_
+- Ma prédiction : « 105 ». `a * b` transforme le texte `"5"` en nombre, donc `c` vaut 10. Mais `c + a` colle 10 avec le texte `"5"`, comme dans la caisse du kiosque, au lieu d'additionner.
+- Ce qui s'est passé : la console affiche `105` — juste
