@@ -7,14 +7,14 @@ Barème : 1 = cassé · 3 = moyen · 5 = ça va (ces pages n'auront jamais 5 par
 
 | Capture | Lisibilité | Navigation | Feedback | Cohérence | Accessibilité | Phrase précise |
 |---|---|---|---|---|---|---|
-| 01 mur de texte | _ | _ | _ | _ | _ | Le titre, les sous-titres, les liens et le texte ont tous la même taille (11 px) et le même poids : rien ne dit par où commencer. Le texte gris #888 sur blanc n'atteint que 3,54:1 (sous les 4,5:1 du WCAG AA). |
-| 02 labyrinthe | _ | _ | _ | _ | _ | Pour continuer, il faut passer par 6 niveaux (« Menu > Espace > Plus > Options > Avancé > Liste ») et la page avoue elle-même que « le bouton principal est quelque part ». Le lien « Aide? » flotte seul en haut à droite, loin du contenu. |
-| 03 silence | _ | _ | _ | _ | _ | Le bouton « ok » a un texte #ddd sur un fond #ddd (contraste 1:1, il est invisible) et le clic ne déclenche rien : aucun message, aucun chargement. Les champs n'ont pas de vrai `<label>` et la mention légale #ccc en 11 px n'atteint que 1,61:1. |
-| 04 carnaval | _ | _ | _ | _ | _ | Cinq polices différentes (Comic Sans, Impact, Georgia, Courier) sur une seule page, et le texte vert #0F0 sur fond jaune #FF0 n'atteint que 1,28:1. Les prix en promo ne sont signalés que par la couleur rouge, « rien d'autre ne le dit ». |
+| 01 mur de texte | 1 | 2 | 3 | 3 | 2 | Le titre, les sous-titres, les liens et le texte ont tous la même taille (11 px) et le même poids : rien ne dit par où commencer. Le texte gris #888 sur blanc n'atteint que 3,54:1 (sous les 4,5:1 du WCAG AA). |
+| 02 labyrinthe | 3 | 1 | 2 | 2 | 2 | Pour continuer, il faut passer par 6 niveaux (« Menu > Espace > Plus > Options > Avancé > Liste ») et la page avoue elle-même que « le bouton principal est quelque part ». Le lien « Aide? » flotte seul en haut à droite, loin du contenu. |
+| 03 silence | 2 | 3 | 1 | 2 | 1 | Le bouton « ok » a un texte #ddd sur un fond #ddd (contraste 1:1, il est invisible) et le clic ne déclenche rien : aucun message, aucun chargement. Les champs n'ont pas de vrai `<label>` et la mention légale #ccc en 11 px n'atteint que 1,61:1. |
+| 04 carnaval | 1 | 3 | 3 | 1 | 1 | Cinq polices différentes (Comic Sans, Impact, Georgia, Courier) sur une seule page, et le texte vert #0F0 sur fond jaune #FF0 n'atteint que 1,28:1. Les prix en promo ne sont signalés que par la couleur rouge, « rien d'autre ne le dit ». |
 
 ## La pire, pour la présentation
 
-Capture n° _ parce que _
+Capture n° 03 parce que le bouton « ok » est invisible (texte #ddd sur fond #ddd, 1:1) et que le clic ne donne aucun retour : l'utilisateur ne peut tout simplement pas créer son compte, et il ne sait même pas pourquoi.
 
 ## Une correction mesurable par capture
 
