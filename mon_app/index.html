@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Sans cette ligne, le téléphone afficherait la page « dézoomée » -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Devis : créez un devis professionnel en quelques minutes et générez-le en PDF ou Word.">
+  <title>Devis — Créez un devis professionnel en quelques minutes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ EN-TÊTE ============ -->
+  <header class="entete">
+    <a class="marque" href="#haut" aria-label="Devis, retour en haut de la page">
+      <!-- Logo de l'app : une feuille de devis avec une coche verte -->
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="9" y="5" width="30" height="38" rx="5" fill="#fff" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M16 16h12M16 23h16M16 30h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="36" cy="36" r="8" fill="#34c759"/>
+        <path d="M32.5 36l2.5 2.5 4.5-5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Devis</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <!-- La barre de recherche et les filtres viendront en semaine 12 -->
+      <a href="#modeles">Modèles</a>
+      <a href="#etapes">Étapes</a>
+    </nav>
+  </header>
+
+  <main id="haut">
+
+    <!-- ============ ACCUEIL ============ -->
+    <section class="hero" aria-labelledby="titre-app">
+      <svg class="logo logo-grand" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="9" y="5" width="30" height="38" rx="5" fill="#fff" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M16 16h12M16 23h16M16 30h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="36" cy="36" r="8" fill="#34c759"/>
+        <path d="M32.5 36l2.5 2.5 4.5-5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1 id="titre-app">Devis</h1>
+      <p class="sous-titre">Créez un devis professionnel en quelques minutes</p>
+
+      <!-- Les deux actions principales de l'app -->
+      <div class="actions">
+        <a class="action action-primaire" href="#modeles">
+          <span class="action-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v7M8.5 13.5h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span class="action-titre">Nouveau devis</span>
+          <span class="action-texte">Choisir un modèle, remplir et générer en PDF ou Word</span>
+        </a>
+        <a class="action" href="#etapes">
+          <span class="action-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 21V9l6-4v16M10 21V3l10 4v14M3 21h18M13 9h4M13 13h4M13 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="action-titre">Profils d'entreprise</span>
+          <span class="action-texte">Vos coordonnées, logo, banque et devise</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ CHOIX DU MODÈLE (grille de cartes) ============ -->
+    <section class="modeles" id="modeles" aria-labelledby="titre-modeles">
+      <h2 id="titre-modeles">Choisir un modèle</h2>
+      <p class="intro">Choisissez la mise en page de votre devis. Vous pourrez en changer avant de le générer.</p>
+
+      <div class="cartes-grille">
+
+        <article class="carte">
+          <!-- Aperçu miniature du document (décoratif, donc caché aux lecteurs d'écran) -->
+          <div class="apercu" aria-hidden="true">
+            <div class="feuille">
+              <div class="rangee"><span class="b b-accent w-30"></span><span class="b b-doux w-15 haut"></span></div>
+              <div class="colonnes"><span class="bloc"></span><span class="bloc"></span></div>
+              <span class="b b-trait w-100"></span>
+              <span class="b b-trait w-100"></span>
+              <span class="b b-trait w-80"></span>
+              <span class="b b-trait w-100"></span>
+              <span class="b b-accent w-35 droite"></span>
+            </div>
+          </div>
+          <div class="carte-infos">
+            <h3>Classique</h3>
+            <p class="description">Vendeur et client côte à côte, tableau détaillé avec TVA par ligne.</p>
+            <!-- L'action sera branchée en JavaScript (semaine 11) -->
+            <button type="button" class="bouton">Choisir ce modèle</button>
+          </div>
+        </article>
+
+        <article class="carte">
+          <div class="apercu" aria-hidden="true">
+            <div class="feuille">
+              <span class="b b-accent w-30"></span>
+              <span class="b b-encre w-100 fin"></span>
+              <span class="b b-encre w-60"></span>
+              <span class="b b-bleu w-100 haut"></span>
+              <span class="b b-doux w-100"></span>
+              <span class="b b-trait w-80"></span>
+              <span class="b b-doux w-100"></span>
+              <span class="b b-trait w-80"></span>
+            </div>
+          </div>
+          <div class="carte-infos">
+            <h3>Lettre</h3>
+            <p class="description">Style courrier : responsables du projet, introduction et prestations par catégorie.</p>
+            <button type="button" class="bouton">Choisir ce modèle</button>
+          </div>
+        </article>
+
+        <article class="carte">
+          <div class="apercu" aria-hidden="true">
+            <div class="feuille">
+              <div class="rangee"><span class="b b-doux w-30 tres-haut"></span><span class="b b-bleu w-35"></span></div>
+              <span class="b b-bleu w-30"></span>
+              <span class="b b-bleu w-100 haut"></span>
+              <span class="b b-trait w-100"></span>
+              <span class="b b-gris w-100"></span>
+              <span class="b b-trait w-100"></span>
+              <span class="b b-bleu w-35 droite haut"></span>
+            </div>
+          </div>
+          <div class="carte-infos">
+            <h3>Travaux</h3>
+            <p class="description">Tableau par lots, TVA par ligne, début et durée des travaux.</p>
+            <button type="button" class="bouton">Choisir ce modèle</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ COMMENT ÇA MARCHE (c'est une vraie suite d'étapes, donc numérotée) ============ -->
+    <aside class="etapes" id="etapes" aria-labelledby="titre-etapes">
+      <h2 id="titre-etapes">Comment ça marche</h2>
+      <ol class="liste-etapes">
+        <li>
+          <h3>Créez votre profil d'entreprise</h3>
+          <p>Coordonnées, logo, IBAN et taux de TVA : vous les saisissez une seule fois.</p>
+        </li>
+        <li>
+          <h3>Choisissez un modèle</h3>
+          <p>Classique, Lettre ou Travaux, selon le type de chantier.</p>
+        </li>
+        <li>
+          <h3>Remplissez et générez</h3>
+          <p>Ajoutez vos lignes : les totaux HT, TVA et TTC se calculent tout seuls. Exportez en PDF ou Word.</p>
+        </li>
+      </ol>
+    </aside>
+
+  </main>
+
+  <!-- ============ PIED DE PAGE ============ -->
+  <footer class="pied">
+    <p>© 2026 — Killian · Module ICT 291</p>
+  </footer>
+
+</body>
+</html>
