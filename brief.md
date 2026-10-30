@@ -65,13 +65,17 @@ Fiable, directe, chaleureuse. Comme **le carnet de chantier bien tenu d'un bon a
 
 ## 8. Palette
 
-Direction retenue après la critique ([design/critique.md](mon_app/design/critique.md)) :
+Nouvelle version (semaine 9), alignée sur l'application réellement développée.
+Maquette : [design/maquette-retenue/](mon_app/design/maquette-retenue/) · site : [mon_app/index.html](mon_app/index.html)
 
-- Fond : blanc cassé chaud (#F7F6F2)
-- Texte : quasi-noir (#16181D)
-- Accent : orange chantier foncé (#B23F0A) pour les boutons d'action
-- Attention / erreur : rouge brique (#B3261E)
-- Succès / confirmation : vert (#1E6B3A)
+- Fond : gris très clair (#F5F5F7), cartes blanches (#FFFFFF)
+- Texte : quasi-noir (#1D1D1F), texte secondaire gris (#6E6E73)
+- Accent : bleu (#0071E3) pour les boutons d'action, bleu pâle (#E6F0FC) pour les fonds d'icônes
+- Attention / erreur : rouge (#D9463F)
+- Succès / confirmation : vert (#34C759)
+- Typographie : police système Apple (San Francisco) ; Inter dans la maquette pen.dev
+
+Ancienne direction (orange chantier, après la critique [design/critique.md](mon_app/design/critique.md)) : archivée dans [design/maquette-retenue/ancienne-version/](mon_app/design/maquette-retenue/ancienne-version/).
 
 ## 9. Interdits
 
