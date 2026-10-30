@@ -1,0 +1,40 @@
+/* =========================================================
+   S09-AV1 — Container queries (parcours avancé, ICT 291)
+   But : la carte de modèle s'adapte à la largeur de SA boîte,
+   et non à la largeur de l'écran.
+   S'utilise avec ../../mon_app/style.css (styles de base de la carte).
+   ========================================================= */
+
+/* 1. Le parent devient un « contexte de conteneur » :
+      ses enfants pourront interroger sa largeur. */
+.zone-carte {
+  container-type: inline-size;
+  container-name: zone-carte;
+}
+
+/* 2. Par défaut (boîte étroite) : la carte reste verticale,
+      comme définie dans style.css → rien à ajouter ici. */
+
+/* 3. Dès que la BOÎTE fait au moins 400 px de large,
+      la carte passe à l'horizontale : aperçu à gauche, texte à droite. */
+@container zone-carte (min-width: 400px) {
+  .carte {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .carte .apercu {
+    flex: 0 0 170px;              /* largeur fixe de l'aperçu */
+    height: auto;
+    min-height: 200px;
+  }
+
+  .carte .carte-infos {
+    justify-content: center;
+  }
+
+  /* Le bouton ne s'étire plus sur toute la largeur */
+  .carte .bouton {
+    align-self: flex-start;
+  }
+}

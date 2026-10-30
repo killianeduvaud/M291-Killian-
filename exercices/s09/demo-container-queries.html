@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test des container queries — Devis</title>
+  <!-- Styles de base de l'app, puis le bonus qui les complète -->
+  <link rel="stylesheet" href="../../mon_app/style.css">
+  <link rel="stylesheet" href="container-queries.css">
+  <style>
+    /* Mise en page de la page de test uniquement */
+    .demo {
+      display: grid;
+      gap: var(--space-4);
+      padding: var(--space-4) 0 var(--space-6);
+    }
+
+    .demo h2 {
+      margin-bottom: var(--space-2);
+      font-size: 1rem;
+      color: var(--color-text-muted);
+    }
+
+    .etroite { max-width: 280px; }   /* une colonne latérale étroite */
+
+    @media (min-width: 768px) {
+      .demo { grid-template-columns: 280px 1fr; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>Container queries</h1>
+      <p class="sous-titre">La même carte, dans deux boîtes de largeur différente.</p>
+    </section>
+
+    <div class="demo">
+      <!-- Boîte étroite (< 400 px) : la carte reste verticale -->
+      <section>
+        <h2>Colonne étroite (280 px)</h2>
+        <div class="zone-carte etroite">
+          <article class="carte">
+            <div class="apercu" aria-hidden="true">
+              <div class="feuille">
+                <div class="rangee"><span class="b b-accent w-30"></span><span class="b b-doux w-15 haut"></span></div>
+                <div class="colonnes"><span class="bloc"></span><span class="bloc"></span></div>
+                <span class="b b-trait w-100"></span>
+                <span class="b b-trait w-80"></span>
+                <span class="b b-accent w-35 droite"></span>
+              </div>
+            </div>
+            <div class="carte-infos">
+              <h3>Classique</h3>
+              <p class="description">Vendeur et client côte à côte, tableau détaillé avec TVA par ligne.</p>
+              <button type="button" class="bouton">Choisir ce modèle</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Boîte large (≥ 400 px) : la carte passe à l'horizontale -->
+      <section>
+        <h2>Zone large</h2>
+        <div class="zone-carte">
+          <article class="carte">
+            <div class="apercu" aria-hidden="true">
+              <div class="feuille">
+                <div class="rangee"><span class="b b-accent w-30"></span><span class="b b-doux w-15 haut"></span></div>
+                <div class="colonnes"><span class="bloc"></span><span class="bloc"></span></div>
+                <span class="b b-trait w-100"></span>
+                <span class="b b-trait w-80"></span>
+                <span class="b b-accent w-35 droite"></span>
+              </div>
+            </div>
+            <div class="carte-infos">
+              <h3>Classique</h3>
+              <p class="description">Vendeur et client côte à côte, tableau détaillé avec TVA par ligne.</p>
+              <button type="button" class="bouton">Choisir ce modèle</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
